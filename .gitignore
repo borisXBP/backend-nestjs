@@ -1,3 +1,6 @@
+# 关键文件不对外暴露
+push.sh
+
 # compiled output
 /dist
 /node_modules
