@@ -10,7 +10,7 @@ import {
   Delete,
 } from '@nestjs/common';
 import { HelloService } from './hello.service';
-import { Hello, UserRole } from './classes/hello';
+import { UserRole } from './classes/hello';
 import {
   ApiBearerAuth,
   ApiBody,
@@ -33,7 +33,6 @@ export class HelloController {
   @ApiResponse({
     status: 200,
     description: 'get work hard ...',
-    type: Hello,
   })
   fetch(@Query() { id }, @Headers('token') token): string {
     console.log(token);

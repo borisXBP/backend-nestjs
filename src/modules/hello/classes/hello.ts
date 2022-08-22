@@ -5,7 +5,7 @@ export enum UserRole {
   User = 'User',
 }
 
-export class Hello {
+export class Example {
   @ApiProperty({ example: 'bee', description: 'This me' })
   name: string;
 
