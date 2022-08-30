@@ -10,6 +10,9 @@ async function bootstrap() {
   // 全局使用过滤器
   // app.useGlobalFilters(new HttpExceptionFilter());
 
+  // 全局管道
+  // app.useGlobalPipes(new ValidationPipe());
+
   // 设置 swagger 文档相关配置，引入 swagger 需要安装依赖包：
   // swagger-ui-express 、 @nestjs/swagger 、class-validator
   const swaggerOptions = new DocumentBuilder()
