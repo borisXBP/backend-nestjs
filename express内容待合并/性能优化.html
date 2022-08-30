@@ -1,0 +1,78 @@
+<script>
+    whiteScreen = new Date() - performance.timing.navigationStart
+    whiteScreen = performance.timing.domLoading - performance.timing.navigationStart
+</script>
+
+<script>
+    const getPerformance = () => {
+    if (!window.performance) return
+    const timing = window.performance.timing
+    const performance = {
+        // 重定向耗时
+        redirect: timing.redirectEnd - timing.redirectStart,
+        // 白屏时间
+        whiteScreen: whiteScreen,
+        // 
+        dom: timing.domComplete - timing.domLoading,
+        
+        load: timing.loadEventEnd - timing.navigationStart,
+        
+        unload: timing.unloadEventEnd - timing.unloadEventStart,
+        
+        // 
+        request: timing.responseEnd - timing.requestStart,
+
+        // tcp 连接耗时
+        tcp: timing.connectEnd - timing.connectStart,
+
+        // 保存记录时的时间戳
+        time: Date.now(),
+    }
+    return performance
+}
+
+    const getResources = () => {
+    if (!window.performance) return
+    const data = window.performance.getEntriesByType('resource')
+    const resource = {
+        xmlhttprequest: [],
+        css: [],
+        other: [],
+        script: [],
+        img: [],
+        link: [],
+        fetch: [],
+        time: Date.now(),
+    }
+
+    data.forEach(item => {
+        const arry = resource[item.initiatorType]
+        arry && arry.push({
+            
+            name: item.name,
+            
+            duration: item.duration.toFixed(2),
+            
+            size: item.transferSize,
+            
+            protocol: item.nextHopProtocol,
+        })
+    })
+
+    return resource
+}
+
+    fetch('http://192.168.31.37:8888/upload/performance', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            performance: getPerformance(),
+            resources: getResources(),
+            time: Date.now()
+        }),
+    }).then(res=>{
+      console.log('success');
+    })
+  </script>

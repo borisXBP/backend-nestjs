@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Analysis</title>
+    <style>
+      .container {
+        width: 700px;
+        height: 400px;
+        display: inline-block;
+        margin-left: 40px;
+      }
+      .content {
+        height: 400px;
+        width: 1400px;
+        margin-left: 40px;
+      }
+      .title {
+        font-size: 20px;
+        text-align: center;
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body style="width: 100vw; height: 100vh; overflow-x: hidden">
+    <!-- 分析页面性能 -->
+    <h1 class="title">---------------- 页面性能分析 ----------------</h1>
+    <div id="one95" class="container"></div>
+    <div id="one241" class="container"></div>
+
+    <div id="two95" class="container"></div>
+    <div id="two241" class="container"></div>
+
+    <!-- 分析网络性能 -->
+    <h1 class="title">---------------- 网络质量分析 ----------------</h1>
+    <div id="three95" class="container"></div>
+    <div id="three241" class="container"></div>
+
+    <div id="four95" class="container"></div>
+    <div id="four241" class="container"></div>
+
+    <h1 class="title">---------------- 10.6 分析 ----------------</h1>
+    <div id="one10" class="content"></div>
+    <div id="two10" class="content"></div>
+
+    <!--  <div id="three10" class="content"></div> -->
+    <div id="four10" class="content"></div>
+  </body>
+
+  <script src="./lib/echarts.js"></script>
+  <script src="./module/func.js"></script>
+  <script type="module">
+    import { getCharts } from "./index.js";
+    const one95 = document.getElementById("one95");
+    const one241 = document.getElementById("one241");
+    const two95 = document.getElementById("two95");
+    const two241 = document.getElementById("two241");
+
+    const three95 = document.getElementById("three95");
+    const three241 = document.getElementById("three241");
+    const four95 = document.getElementById("four95");
+    const four241 = document.getElementById("four241");
+
+    const one10 = document.getElementById("one10");
+    const two10 = document.getElementById("two10");
+    const three10 = document.getElementById("three10");
+    const four10 = document.getElementById("four10");
+    getCharts([
+      one95,
+      one241,
+      two95,
+      two241,
+      three95,
+      three241,
+      four95,
+      four241,
+      one10,
+      two10,
+      /*   three10, */
+      four10,
+    ]);
+  </script>
+</html>
