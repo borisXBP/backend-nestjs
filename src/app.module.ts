@@ -3,13 +3,12 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { HelloModule } from './modules/hello/hello.module';
 import { LoggerMiddleware } from './common/middleware/logger.middleware';
-import { ExceptionController } from './modules/exception/exception.controller';
 import { ExceptionService } from './modules/exception/exception.service';
 import { ExceptionModule } from './modules/exception/exception.module';
 
 @Module({
   imports: [HelloModule, ExceptionModule],
-  controllers: [AppController, ExceptionController],
+  controllers: [AppController],
   providers: [AppService, ExceptionService],
 })
 export class AppModule {
